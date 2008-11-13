@@ -3,6 +3,7 @@ Merb::Config.use { |c|
   c[:exception_details] = true
   c[:reload_classes] = false
   c[:log_level] = :debug
+  c[:log_auto_flush ] = true
   
   c[:log_file]  = Merb.root / "log" / "production.log"
   # or redirect logger using IO handle
