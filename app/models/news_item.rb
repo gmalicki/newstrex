@@ -62,7 +62,7 @@ end
 
 require 'rubyful_soup'
 require 'open-uri'
-require 'image_science'
+#require 'image_science'
 
 class ImageSource
   attr_accessor :save_path
@@ -76,23 +76,23 @@ class ImageSource
   
 protected
   def download_images
-    images = []
-    image_urls.each do |uri|
-      if img = open(uri, 'User-Agent' => 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)').read
-        img_type = %w(.jpg .gif .png).detect { |x| x if uri.match(/#{x}/i) }
-        orig_path = @save_path+Digest::MD5.hexdigest(uri)+'-orig' + img_type
-        sized_path = @save_path+Digest::MD5.hexdigest(uri) + img_type
-        open(orig_path, 'wb').write(img)
-        ImageScience.with_image(orig_path) do |img|
-          img.thumbnail(100) do |thumb|
-            thumb.save sized_path
-          end
-        end
-        images << (Digest::MD5.hexdigest(uri)+img_type)
-      end
-    end
-    images
-  end
+    # images = []
+    #  image_urls.each do |uri|
+    #    if img = open(uri, 'User-Agent' => 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)').read
+    #      img_type = %w(.jpg .gif .png).detect { |x| x if uri.match(/#{x}/i) }
+    #      orig_path = @save_path+Digest::MD5.hexdigest(uri)+'-orig' + img_type
+    #      sized_path = @save_path+Digest::MD5.hexdigest(uri) + img_type
+    #      open(orig_path, 'wb').write(img)
+    #      ImageScience.with_image(orig_path) do |img|
+    #        img.thumbnail(100) do |thumb|
+    #          thumb.save sized_path
+    #        end
+    #      end
+    #      images << (Digest::MD5.hexdigest(uri)+img_type)
+    #    end
+    #  end
+    #  images
+   end
   
   def image_urls
     soup = BeautifulSoup.new(@html)
