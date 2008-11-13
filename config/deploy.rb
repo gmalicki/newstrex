@@ -26,3 +26,8 @@ default_run_options[:pty] = true  # Forgo errors when deploying from windows
 #ssh_options[:keys] = %w(/Path/To/id_rsa)            # If you are using ssh_keys
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :use_sudo, false
+
+
+after "deploy:update_code" do
+  run "ln -s #{shared_path}/database.yml #{release_path}/config"
+end
