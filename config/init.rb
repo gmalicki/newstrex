@@ -1,4 +1,11 @@
 # Go to http://wiki.merbivore.com/pages/init-rb
+
+# needed for dreamhost for some reason.
+class Time
+  def to_date
+    Date.parse(self.to_formatted_s(:db))
+  end
+end
  
 require 'config/dependencies.rb'
  
