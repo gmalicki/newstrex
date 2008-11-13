@@ -30,5 +30,5 @@ set :use_sudo, false
 
 after "deploy:update_code" do
   run 'touch /home/ah1337/newstrex.dreamhosters.com/current/tmp/restart.txt'
-  #run "ln -s #{shared_path}/database.yml /home/ah1337/newstrex.dreamhosters.com/current/config"
+  run "ln -s #{shared_path}/database.yml /home/ah1337/newstrex.dreamhosters.com/current/config"
 end
