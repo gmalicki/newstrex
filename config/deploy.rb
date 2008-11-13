@@ -19,7 +19,7 @@ role :db,  domain, :primary => true
 
 # deploy config
 set :deploy_to, applicationdir
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
 
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
