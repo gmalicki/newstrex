@@ -1,0 +1,8 @@
+<blockquote>
+    <div class="post" id="post">
+    	<h2><a href="">More Headlines</a></h2>
+    </div>
+    <% @headlines.each do |story| %>
+        <%= link_to(story.title, story.url) %>
+    <% end %>
+</blockquote>

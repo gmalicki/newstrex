@@ -1,0 +1,36 @@
+PHASE 1
+
+ * HTML/CSS integration                   (easy 4 hours)  1 hour left
+ 
+ * TAG CLOUD!                             (easy 4 hours)
+
+ * Text processing / name-link generation DONE
+ 
+ * Main Page                              (easy 4 hours)
+
+ * Image support for news_items           DONE
+ 
+ * NewLib Spider                          DONE
+ 
+ * Ads                                    (medium 6 hours)
+ 
+ * SEO checklist                          (easy 4 hours)
+ 
+ * Deployment.                            (difficult 6 hours)
+ 
+ ------------------
+ 
+ 32 hours
+ 
+ 
+ 
+ PHASE 2
+ 
+ * Deep-scraping of feeds to retain "the entire story" 'IMDB News Desk' style
+ 
+ * Image support for People.
+ 
+ * Admin interface to manage images mostly.
+ 
+ 
+ 

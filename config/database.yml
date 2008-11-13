@@ -1,0 +1,16 @@
+development: &defaults
+  host: localhost
+  adapter: mysql
+  database: people
+  username: root
+  
+production:
+  <<:       *defaults
+
+test:
+  adapter: sqlite3
+  database: test.sqlite3
+  timeout: 5000
+  
+rake:
+  <<: *defaults

@@ -1,0 +1,20 @@
+<% uri = URI.parse(item.news_source.url) %>
+<div class="post" id="post-<%= item.id %>">
+	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
+	
+	<div class="entry">
+	    <% if item.images %>
+	    <% item.images.each do |img| %>
+	        <img src='/images/<%= img %>'/>
+	    <% end %>
+	    <% end%>
+		<%= item.content %>
+	</div>
+
+	<p class="postmetadata">
+	    <small>
+	    <%= item.created_at.strftime("%B %d %Y") %>   
+	    <% if uri.host && uri.host.size > 0%>
+	        |  From <a href="http://<%= uri.host %>" title="See more news from <%= uri.host %>" rel="orig tag"><%= uri.host %></a></small></p>
+	    <% end %>
+</div>
