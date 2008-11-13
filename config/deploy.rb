@@ -29,5 +29,5 @@ set :use_sudo, false
 
 
 after "deploy:update_code" do
-  run "ln -s #{shared_path}/database.yml #{release_path}/config"
+  run "ln -s #{shared_path}/database.yml /home/ah1337/newstrex.dreamhosters.com/current/config"
 end

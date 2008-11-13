@@ -1,0 +1,1 @@
+ENV['GEM_PATH'] = '/home/ah1337/newstrex.dreamhosters.com/shared/gems/'
