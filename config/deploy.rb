@@ -19,7 +19,7 @@ role :db,  domain, :primary => true
 
 # deploy config
 set :deploy_to, applicationdir
-set :deploy_via, :export
+set :deploy_via, :remote_cache
 
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
@@ -30,5 +30,5 @@ set :use_sudo, false
 
 after "deploy:update_code" do
   run 'touch /home/ah1337/newstrex.dreamhosters.com/current/tmp/restart.txt'
-  #run "ln -s #{shared_path}/database.yml /home/ah1337/newstrex.dreamhosters.com/current/config"
+  run "ln -s #{shared_path}/database.yml /home/ah1337/newstrex.dreamhosters.com/current/config"
 end
