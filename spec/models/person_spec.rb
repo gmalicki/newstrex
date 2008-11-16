@@ -27,6 +27,11 @@ describe Person do
     #Person.import_imdb_file File.join( File.dirname(__FILE__), '..', '..', '..', "workspace", 'actresses.list' ) , 'f'
   end
   
+  it "should have an assets assocation" do
+    p = Person.new
+    p.assets.should == []
+  end
+  
   # it "should generate a known_as attribute before saving a new record if one does not already exist" do
   #   @p.first_name = "Gabe"
   #   @p.last_name = "Malicki"

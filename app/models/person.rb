@@ -13,6 +13,7 @@ class Person
   property :created_at, DateTime
   property :updated_at, DateTime
   
+  has n, :assets
   has n, :news_matches
   has n, :news_items, :through => :news_matches
   
@@ -36,7 +37,8 @@ class Person
   
   def self.tags_by_most_complete
     res = Set.new
-    NewsItem.all(:order => [:images, :updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p } }
+    #NewsItem.all(:order => [:images, :updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p } }
+    NewsItem.all(:order => [:updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p }}
     res.to_a
   end
   
@@ -50,9 +52,9 @@ class Person
       else
         rss_content += 1
       end
-      if x.images
-       images += x.images.size
-      end
+      # if x.images
+      #        images += x.images.size
+      #       end
     end
     
     (rss_content * 1.2) + no_content + (images * 1.3)

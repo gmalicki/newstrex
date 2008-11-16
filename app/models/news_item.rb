@@ -9,11 +9,11 @@ class NewsItem
   property :deep_content,   Text  
   property :content,        Text,                           :lazy => false
   property :names,          Object
-  property :images,         Object,                         :lazy => false
   property :published_at,   DateTime
   property :created_at,     DateTime,                       :lazy => false
   property :updated_at,     DateTime
   
+  has n, :assets
   has n, :news_matches
   has n, :people, :through => :news_matches
   
@@ -46,12 +46,7 @@ protected
   end
   
   def extract_images
-    begin
-      is = ImageSource.new(rss_content, File.join(Merb.root, 'public', 'images') + '/')
-      puts "images: #{is.images.inspect}"
-      self.images = is.images
-    rescue
-    end
+    Asset.save_rss_media(self)
   end
   
   def load_matches
@@ -59,47 +54,6 @@ protected
   end
 end
 
-
-require 'rubyful_soup'
-require 'open-uri'
-#require 'image_science'
-
-class ImageSource
-  attr_accessor :save_path
-  attr_reader   :images
-  
-  def initialize(html, save_path = '/tmp/')
-    #@html, @save_path, @images = html, save_path, download_images
-    @html, @save_path = html, save_path
-    @images = download_images
-  end
-  
-protected
-  def download_images
-    # images = []
-    #  image_urls.each do |uri|
-    #    if img = open(uri, 'User-Agent' => 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)').read
-    #      img_type = %w(.jpg .gif .png).detect { |x| x if uri.match(/#{x}/i) }
-    #      orig_path = @save_path+Digest::MD5.hexdigest(uri)+'-orig' + img_type
-    #      sized_path = @save_path+Digest::MD5.hexdigest(uri) + img_type
-    #      open(orig_path, 'wb').write(img)
-    #      ImageScience.with_image(orig_path) do |img|
-    #        img.thumbnail(100) do |thumb|
-    #          thumb.save sized_path
-    #        end
-    #      end
-    #      images << (Digest::MD5.hexdigest(uri)+img_type)
-    #    end
-    #  end
-    #  images
-   end
-  
-  def image_urls
-    soup = BeautifulSoup.new(@html)
-    soup.find_all('img').map { |img| img['src'] }
-  end
-end
-  
 
 class PlaintextDoc
   def initialize(html)

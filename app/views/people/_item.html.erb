@@ -3,12 +3,15 @@
 	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
 	
 	<div class="entry">
-	    <% if item.images %>
-	    <% item.images.each do |img| %>
-	        <img src='/images/<%= img %>'/>
+	    <div class="news_photos" style="border: 2px solid green; float:left; width: 30%; float:right">
+	    <% if item.assets && item.assets.size > 0 %>
+	    <% item.assets.each do |img| %>
+	        <% next unless img.file_name && img.file_name.size > 4 && img.small_thumb.file_name %>
+	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>'/> 
 	    <% end %>
 	    <% end%>
-		<%= item.content %>
+	    </div>
+		<p><%= item.content %></p>
 	</div>
 
 	<p class="postmetadata">

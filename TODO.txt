@@ -1,22 +1,28 @@
 PHASE 1
 
- * HTML/CSS integration                   (easy 4 hours)  1 hour left
+ * HTML/CSS integration                   DONE (slightly ongoing)
  
- * TAG CLOUD!                             (easy 4 hours)
+ * TAG CLOUD!                             DONE
 
  * Text processing / name-link generation DONE
  
  * Main Page                              (easy 4 hours)
 
- * Image support for news_items           DONE
+ * Image support for news_items/people    (easy 4 hours)
  
  * NewLib Spider                          DONE
+ 
+ * Multiple Pics per person               (4 hours)
+ 
+ * first-last-pictures maybe first-last-photos
+ 
+ * content-rich items should be truncated and have their own page.  
  
  * Ads                                    (medium 6 hours)
  
  * SEO checklist                          (easy 4 hours)
  
- * Deployment.                            (difficult 6 hours)
+ * Deployment.                            DONE
  
  ------------------
  
@@ -24,11 +30,27 @@ PHASE 1
  
  
  
+ image:
+   id: 923
+   bucket: newstrex-images
+   original: 
+     file_name: foo.jpg
+     height: 20
+     width: 20
+     mime-type: image/jpeg
+     size: 2009
+   small: 
+     file_name: foo-small.jpg
+     height: 20
+     width: 20
+     mime-type: image/jpeg
+     size: 2009
+ 
+ 
+ 
  PHASE 2
  
  * Deep-scraping of feeds to retain "the entire story" 'IMDB News Desk' style
- 
- * Image support for People.
  
  * Admin interface to manage images mostly.
  

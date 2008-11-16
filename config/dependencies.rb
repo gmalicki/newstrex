@@ -27,4 +27,6 @@ require 'uri'
 require 'open-uri'
 require "rfeedfinder"                 # RSS/ATOM detection library.
 require "feed-normalizer"             # normalization of RSS / ATOM feeds
+require 'right_aws'
+require 'rubyful_soup'
 
