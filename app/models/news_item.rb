@@ -35,11 +35,11 @@ class NewsItem
   end
   
   def self.matched_with_assets
-    matched_items.map { |i| i if x.assets.size > 0 }.compact
+    matched_items.map { |i| i unless i.assets.empty? }.compact
   end
   
   def self.matched_without_assets
-    matched_items.map { |i| i if x.assets.size == 0 }.compact
+    matched_items.map { |i| i if i.assets.empty? }.compact
   end
   
 protected
