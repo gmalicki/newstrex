@@ -27,19 +27,19 @@ class NewsItem
   #after    :save, :load_matches
   
   def self.matched_items
-    NewsItem.all.map { |x| x unless x.people.empty? }
+    NewsItem.all.map { |x| x unless x.people.empty? }.compact
   end
   
   def self.unmatched_items
-    NewsItem.all.map { |x| x if x.people.empty? }
+    NewsItem.all.map { |x| x if x.people.empty? }.compact
   end
   
   def self.matched_with_assets
-    matched_items.map { |i| i if x.assets.size > 0 }
+    matched_items.map { |i| i if x.assets.size > 0 }.compact
   end
   
   def self.matched_without_assets
-    matched_items.map { |i| i if x.assets.size == 0 }
+    matched_items.map { |i| i if x.assets.size == 0 }.compact
   end
   
 protected
