@@ -8,11 +8,11 @@ PHASE 1
  
  * Main Page                              (easy 4 hours)
 
- * Image support for news_items/people    (easy 4 hours)
+ * Image support for news_items/people    DONE
  
  * NewLib Spider                          DONE
  
- * Multiple Pics per person               (4 hours)
+ * Multiple Pics per person               DONE
  
  * first-last-pictures maybe first-last-photos
  
@@ -29,22 +29,26 @@ PHASE 1
  32 hours
  
  
+image: 
+  id: 31337
+  url: http://www.google.com/logo.gif 
  
- image:
-   id: 923
-   bucket: newstrex-images
-   original: 
-     file_name: foo.jpg
-     height: 20
-     width: 20
-     mime-type: image/jpeg
-     size: 2009
-   small: 
-     file_name: foo-small.jpg
-     height: 20
-     width: 20
-     mime-type: image/jpeg
-     size: 2009
+ 
+image:
+  id: 923
+  bucket: newstrex-images
+  original: 
+    file_name: foo.jpg
+    height: 20
+    width: 20
+    mime-type: image/jpeg
+    size: 2009
+  small: 
+    file_name: foo-small.jpg
+    height: 20
+    width: 20
+    mime-type: image/jpeg
+    size: 2009
  
  
  

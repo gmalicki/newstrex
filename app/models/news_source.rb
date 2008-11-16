@@ -16,7 +16,7 @@ class NewsSource
     feed_url = Rfeedfinder.feed(url)
     if feed_url && @feed = FeedNormalizer::FeedNormalizer.parse(open(feed_url))
       @feed.entries.each do |e|
-        news_items << NewsItem.new(:title => e.title, :url => e.url, :rss_content => e.content)
+        news_items << NewsItem.new(:title => e.title, :url => e.url, :rss_content => e.content, :news_source_id => self.id)
       end
       return true
     end

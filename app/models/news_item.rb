@@ -24,10 +24,9 @@ class NewsItem
     extract_images
     localize_content
   end
-  after    :create, :load_matches
+  #after    :save, :load_matches
     
 protected
-
   def content_plain_text
     PlaintextDoc.new(rss_content).to_s
   end

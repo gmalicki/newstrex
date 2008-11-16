@@ -3,21 +3,23 @@
 	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
 	
 	<div class="entry">
-	    <div class="news_photos" style="border: 2px solid green; float:left; width: 30%; float:right">
 	    <% if item.assets && item.assets.size > 0 %>
 	    <% item.assets.each do |img| %>
 	        <% next unless img.file_name && img.file_name.size > 4 && img.small_thumb.file_name %>
-	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>'/> 
+	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>' style="float: right; padding: 5px"/> 
 	    <% end %>
 	    <% end%>
-	    </div>
+
 		<p><%= item.content %></p>
 	</div>
-
+    <div style="display:block; float:left; width: 100%">
 	<p class="postmetadata">
 	    <small>
 	    <%= item.created_at.strftime("%B %d %Y") %>   
 	    <% if uri.host && uri.host.size > 0%>
-	        |  From <a href="http://<%= uri.host %>" title="See more news from <%= uri.host %>" rel="orig tag"><%= uri.host %></a></small></p>
+	        |  From <a href="http://<%= uri.host %>" title="See more news from <%= uri.host %>" rel="orig tag"><%= uri.host %></a></small>
 	    <% end %>
+	</p>
+	</div>
+	<div style="clear:both"></div>
 </div>
