@@ -27,11 +27,11 @@ class NewsItem
   #after    :save, :load_matches
   
   def self.matched_items
-    NewsItem.all.each { |x| x if x.people.size > 0 }
+    NewsItem.all.each { |x| x unless x.people.empty? }
   end
   
   def self.unmatched_items
-    NewsItem.all.each { |x| x if x.people.size == 0 }
+    NewsItem.all.each { |x| x if x.people.empty? }
   end
   
   def self.matched_with_assets
