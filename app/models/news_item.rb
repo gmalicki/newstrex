@@ -25,7 +25,23 @@ class NewsItem
     localize_content
   end
   #after    :save, :load_matches
-    
+  
+  def self.matched_items
+    NewsItem.all.each { |x| x if x.people.size > 0 }
+  end
+  
+  def self.unmatched_items
+    NewsItem.all.each { |x| x if x.people.size == 0 }
+  end
+  
+  def self.matched_with_assets
+    matched_items.each { |i| i if x.assets.size > 0 }
+  end
+  
+  def self.matched_without_assets
+    matched_items.each { |i| i if x.assets.size == 0 }
+  end
+  
 protected
   def content_plain_text
     PlaintextDoc.new(rss_content).to_s

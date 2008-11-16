@@ -14,6 +14,8 @@ PHASE 1
  
  * Multiple Pics per person               DONE
  
+ * smooth out data import process.  
+ 
  * first-last-pictures maybe first-last-photos
  
  * content-rich items should be truncated and have their own page.  
