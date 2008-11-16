@@ -41,7 +41,7 @@ class Asset
         parent.s3_bucket = img['bucket']
         parent.save
       end
-      Asset.all(:parent_id => parent.id).each { |x| x.destroy }
+      Asset.all(:parent_id => img['id']).each { |x| x.destroy }
       %w(large medium small).each do |size|
         if parent && i = img[size]
           Asset.create(:file_name => i['file_name'], 

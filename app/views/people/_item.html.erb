@@ -1,4 +1,10 @@
-<% uri = URI.parse(item.news_source.url) %>
+<% 
+  begin
+      uri = URI.parse(item.news_source.url) 
+  rescue 
+      uri = URI.parse("http://www.reddit.com")
+  end
+  %>
 <div class="post" id="post-<%= item.id %>">
 	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
 	
