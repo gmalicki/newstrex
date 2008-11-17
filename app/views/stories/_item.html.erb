@@ -1,0 +1,36 @@
+<% 
+  begin
+      uri = URI.parse(item.url)
+      if uri.host.match(/feedburner/i)
+          uri = URI.parse(item.news_source.url)
+      end
+  rescue 
+      uri = URI.parse("http://www.reddit.com")
+  end
+  %>
+<div class="post" id="post-<%= item.id %>">
+	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
+	
+	<div class="entry">
+	    <% if item.assets && item.assets.size > 0 %>
+	    <% item.assets.each do |img| %>
+	        <% next unless img.file_name && img.file_name.size > 4 && img.medium_thumb.file_name %>
+	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.medium_thumb.file_name %>' style="float: right; padding: 5px"/> 
+	    <% end %>
+	    <% end%>
+
+		<p><%= item.content %></p>
+	</div>
+    <div style="display:block; float:left; width: 100%">
+	<p class="postmetadata">
+	    <small>
+	    <%= item.created_at.strftime("%B %d %Y") %>   
+	    <% if uri.host && uri.host.size > 0%>
+	        | <%= link_to 'Full Story', item.url%> from <a href="http://<%= uri.host %>" title="See more news from <%= uri.host %>" rel="orig tag"><%= uri.host %></a></small>
+	    <% end %>
+	</p>
+	</div>
+	<div style="clear:both"></div>
+	
+	<%= partial 'people/blog_ad' %>
+</div>
