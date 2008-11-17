@@ -19,7 +19,8 @@ class NewsItem
   
   belongs_to  :news_source
   
-  before   :save do   
+  before   :save do
+    clean_rss_content   
     extract_names
     localize_content
   end
@@ -47,6 +48,11 @@ class NewsItem
   end
   
 protected
+  def clean_rss_content
+    tmp = self.rss_content
+    self.rss_content = CGI.unescapeHTML(tmp)
+  end
+  
   def content_plain_text
     PlaintextDoc.new(rss_content).to_s
   end
