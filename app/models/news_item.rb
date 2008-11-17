@@ -24,7 +24,7 @@ class NewsItem
     #extract_images
     #localize_content
   end
-  after    :save, :load_matches
+  #after    :save, :load_matches
   
   def self.matched_items
     NewsItem.all.map { |x| x unless x.people.empty? }.compact
