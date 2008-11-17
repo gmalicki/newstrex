@@ -25,9 +25,11 @@ class NewsItem
   end
   
   after :save do
-    puts "saved news item for url #{url}"
+    if people.empty?
+      puts "submitting new item for matching"
+      load_matches
+    end
   end
-  #after    :save, :load_matches
   
   def self.matched_items
     NewsItem.all.map { |x| x unless x.people.empty? }.compact
