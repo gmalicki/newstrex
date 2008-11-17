@@ -30,7 +30,7 @@ class NewsItem
   end
   
   def self.extract_images
-    matched_without_assets.each { |x| x.extract_images }
+    matched_without_assets.each { |x| x.send :extract_images }
   end
   
   def self.unmatched_items
