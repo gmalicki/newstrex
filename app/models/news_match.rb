@@ -13,6 +13,7 @@ class NewsMatch
     news_item.names.each do |name|  
       if p = Person.first(:full_name => name)
         NewsMatch.create :person_id => p.id, :news_item_id => news_item.id
+        news_item.extract_images
         count += 1
       end
     end

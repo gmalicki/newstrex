@@ -29,10 +29,6 @@ class NewsItem
     NewsItem.all.map { |x| x unless x.people.empty? }.compact
   end
   
-  def self.extract_images
-    matched_without_assets.each { |x| x.send :extract_images }
-  end
-  
   def self.unmatched_items
     NewsItem.all.map { |x| x if x.people.empty? }.compact
   end
