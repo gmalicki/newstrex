@@ -22,7 +22,10 @@ class NewsItem
   before   :save do   
     extract_names
     localize_content
-    puts "created news item for url #{url}"
+  end
+  
+  after :save do
+    puts "saved news item for url #{url}"
   end
   #after    :save, :load_matches
   
