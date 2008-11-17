@@ -21,13 +21,16 @@ class NewsItem
   
   before   :save do   
     extract_names
-    #extract_images
-    #localize_content
+    localize_content
   end
   #after    :save, :load_matches
   
   def self.matched_items
     NewsItem.all.map { |x| x unless x.people.empty? }.compact
+  end
+  
+  def self.extract_images
+    matched_without_assets.each { |x| x.extract_images }
   end
   
   def self.unmatched_items
