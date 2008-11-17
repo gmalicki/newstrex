@@ -1,6 +1,9 @@
 <% 
   begin
-      uri = URI.parse(item.url) 
+      uri = URI.parse(item.url)
+      if uri.match(/feedburner/i)
+          uri = URI.parse(item.news_source.url)
+      end
   rescue 
       uri = URI.parse("http://www.reddit.com")
   end
