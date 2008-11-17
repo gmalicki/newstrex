@@ -1,7 +1,7 @@
 <% 
   begin
       uri = URI.parse(item.url)
-      if uri.match(/feedburner/i)
+      if uri.host.match(/feedburner/i)
           uri = URI.parse(item.news_source.url)
       end
   rescue 
