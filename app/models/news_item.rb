@@ -26,7 +26,6 @@ class NewsItem
   
   after :save do
     if people.empty?
-      puts "submitting new item for matching"
       load_matches
     end
   end
