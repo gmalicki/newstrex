@@ -20,6 +20,7 @@ class NewsSource
         @feed.entries.each do |e|
           news_items << NewsItem.new(:title => e.title, :url => e.url, :rss_content => e.content, :news_source_id => self.id)
         end
+        puts news_items.inspect
         return true
       end
     rescue
