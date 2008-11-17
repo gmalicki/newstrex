@@ -40,6 +40,7 @@ class Asset
         parent.file_name = img['original']['file_name']
         parent.s3_bucket = img['bucket']
         parent.save
+        puts "parent: #{parent.file_name}"
       end
       Asset.all(:parent_id => img['id']).each { |x| x.destroy }
       %w(large medium small).each do |size|
@@ -50,6 +51,7 @@ class Asset
                        :height => i['height'],
                        :width => i['width'], 
                        :size => i['size'])
+          puts "child: #{i['file_name']}"
         end
       end
     end      
