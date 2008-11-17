@@ -10,10 +10,12 @@ class NewsMatch
   
   def self.submit_news(news_item)
     count = 0
-    news_item.names.each do |name|  
+    news_item.names.each do |name|
+      puts "searching: #{name}"  
       if p = Person.first(:full_name => name)
         NewsMatch.create :person_id => p.id, :news_item_id => news_item.id
         news_item.extract_images
+        puts "matched: #{name} to #{news_item.url} - images: #{news_item.assets.size > 0}"
         count += 1
       end
     end
