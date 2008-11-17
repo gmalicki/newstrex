@@ -1,6 +1,6 @@
 <% 
   begin
-      uri = URI.parse(item.url) || URI.parse(item.news_source.url) 
+      uri = URI.parse(item.url) 
   rescue 
       uri = URI.parse("http://www.reddit.com")
   end
