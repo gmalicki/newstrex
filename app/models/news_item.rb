@@ -14,6 +14,7 @@ class NewsItem
   property :updated_at,     DateTime
   
   has n, :assets
+  has n, :permlinks
   has n, :news_matches
   has n, :people, :through => :news_matches
   
@@ -47,6 +48,13 @@ class NewsItem
     matched_items.map { |i| i if i.assets.empty? }.compact
   end
   
+  def self.from_permlink(link)
+    if p = Permlink.first(:permlink => link)
+      return p.news_item
+    end
+    nil
+  end
+  
 protected
   def clean_rss_content
     tmp = self.rss_content
@@ -63,11 +71,14 @@ protected
   end
   
   def link_for_person(person)
-    '<a href="/people/' + person.permlink + '">' + person.full_name + '</a>'
+    '<a href="/' + person.permlink + '-News" alt="'+ person.full_name + ' News' + '">' + person.full_name + '</a>'
   end
   
   def extract_names
-    self.names = GP.parse(content_plain_text)
+    tmp = Set.new
+    GP.parse(content_plain_text).each { |x| tmp << x }
+    GP.parse(title).each { |x| tmp << x }
+    self.names = tmp.to_a
   end
   
   def extract_images

@@ -20,7 +20,10 @@ class Asset
   belongs_to  :news_item
   
   after :save, :sync_to_primary_storage
-  @@s3_config = YAML.load_file(Merb.root + '/config/amazon_s3.yml')[Merb.env].symbolize_keys!
+  @@s3_config = YAML.load_file(Merb.root + '/config/amazon_s3.yml')[Merb.env] || {
+    'access_key_id' => '1GZFKYFWGM2WEAZFZ202',
+    'secret_access_key' => 'gcD9Y9FYrJ8XvJptCNVnjG+jdgT+ozLnaV+WHfoC'
+  }
   @@sqs_connection = RightAws::Sqs.new(@@s3_config['access_key_id'], @@s3_config['secret_access_key'])
   TEMP_STORAGE = Merb.root + '/tmp/'
   attr_accessor :url

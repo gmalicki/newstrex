@@ -7,15 +7,19 @@
   rescue 
       uri = URI.parse("http://www.reddit.com")
   end
+  inner_item_url = '/' + @person.permlink + '/' + item.permlinks.first.permlink
   %>
+  
 <div class="post" id="post-<%= item.id %>">
-	<h2><a href="<%= item.url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
+	<h2><a href="<%= inner_item_url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
 	
 	<div class="entry">
 	    <% if item.assets && item.assets.size > 0 %>
 	    <% item.assets.each do |img| %>
 	        <% next unless img.file_name && img.file_name.size > 4 && img.small_thumb.file_name %>
+	        <a href="<%= inner_item_url%>">
 	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>' style="float: right; padding: 5px"/> 
+	        </a>
 	    <% end %>
 	    <% end%>
 

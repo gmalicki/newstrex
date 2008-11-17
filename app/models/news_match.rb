@@ -15,10 +15,22 @@ class NewsMatch
       if p = Person.first(:full_name => name)
         NewsMatch.create :person_id => p.id, :news_item_id => news_item.id
         news_item.send :extract_images
+        create_permlink(news_item)
         puts "matched: #{name} to #{news_item.url} - images: #{news_item.assets.size > 0}"
         count += 1
       end
     end
     count
+  end
+  
+  def self.create_permlink(news_item)
+    escaped_title = Permalinks::escape(news_item.title.dup)
+    if news_item.permlinks.empty?
+      pl = Permlink.new(:news_item_id => news_item.id, :permlink => escaped_title)
+      unless pl.save
+        pl.permlink = escaped_title + "#{rand(31337)}"
+        pl.save
+      end
+    end
   end
 end

@@ -30,7 +30,9 @@ Merb::Router.prepare do
   # RESTful routes
   # resources :posts
   identify Person => :permlink do
-    resources :people
+    resources :people do |person|
+      person.resources :stories
+    end
   end
   
   # Adds the required routes for merb-auth using the password slice
@@ -42,6 +44,7 @@ Merb::Router.prepare do
   # clients from calling your create or destroy actions with a GET
   
   match('/:permlink').to(:controller => 'people', :action =>'show')
+  match('/:permlink/:storylink').to(:controller => 'stories', :action =>'show')
   default_routes
   
   # Change this for your home page to be available at /

@@ -14,17 +14,38 @@ PHASE 1
  
  * Multiple Pics per person               DONE
  
- * smooth out data import process.  
+ * smooth out data import process.        DONE
  
- * first-last-pictures maybe first-last-photos
+ * first-last-pictures maybe first-last-photos *TONIGHT*
  
- * content-rich items should be truncated and have their own page.  
+ * content-rich items should be truncated and have their own page a-la topix
+ http://www.topix.com/forum/us/politics/T97VOLHC4NHRPVRS7#comments  *TONIGHT*
  
- * Ads                                    (medium 6 hours)
+ http://localhost:4000/Kanye-West-News
+ http://localhost:4000/Kanye-West/addressed-assault-arrest-in-blog-post
+ http://localhost:4000/Kanye-West/punched-a-reporter
+ http://localhost:4000/Kanye-West/photos
+ http://localhost:4000/Kanye-West/photos/arrest
+ http://localhost:4000/Kanye-West/pictures
+ http://localhost:4000/Kanye-West/pictures/arrest  (both pics and photos work =])
+ 
+ multiple perm-link per news item support.  
+ 
+ * PAGE CACHING ERRRVYWHERE
+ 
+ * URL routing correction           *TONIGHT*
+ 
+ * Get the right mix of initial content into the system for launch.  *TONIGHT*
+ 
+ * Switch to newstrex.com domain    *TONIGHT*
+ 
+ * Ads                                    (medium 2 hours) *TONIGHT*
  
  * SEO checklist                          (easy 4 hours)
  
  * Deployment.                            DONE
+ 
+ * BUGS [duplicate image problem]  *TONIGHT*
  
  ------------------
  
@@ -58,7 +79,9 @@ image:
  
  * Deep-scraping of feeds to retain "the entire story" 'IMDB News Desk' style
  
- * Admin interface to manage images mostly.
- 
- 
+ * registration/login                     (hard 9 hours)
+
+  * comments                               (hard 9 hours) (go for it dude)
+
+  * admin features                         (hard 9 hours)
  

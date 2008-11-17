@@ -59,8 +59,6 @@ google_color_url = "804000";
 <% if @rss_items%>
 	<%= partial 'people/item', :with => @rss_items, :as => :item %>
 <% end %>
-
-
 <% if @headlines && @headlines.size > 0%>
     <%= partial 'people/more_headlines'%>
 <% end %>
@@ -112,10 +110,10 @@ google_color_url = "804000";
 </form>				</li>
 			
 				<li class="pagenav">
-				    <li><h2>Your ear to the blog-o-sphere</h2>
+				    <li><h2>Blog-o-Sphere</h2>
 
 				        <% tag_cloud @cloud, %w(nube1 nube2 nube3 nube5 nube6) do |name, css_class|%>
-				            <%= link_to name, "/people/#{name.gsub(' ', '-')}", :class => css_class %></li>
+				            <%= link_to name, "/#{name.gsub(' ', '-')+'-News'}", :class => css_class %></li>
 				        <% end %>
 				    
 				</li>
