@@ -30,7 +30,7 @@
 </div>
 <hr />
 <div id="wrapper">
-    <p>
+    <p style="width: 400px">
 <% tag_cloud @cloud, %w(nube1 nube2 nube3 nube5 nube6) do |name, css_class|%>
     <%= link_to name, "/#{name.gsub(' ', '-')+'-News'}", :class => css_class %>
 <% end %>
