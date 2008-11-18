@@ -18,13 +18,14 @@ class Permlink
       self.permlink = escape_spaces(self.permlink)
       item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
       if self.permlink.slice(0,1) == "-"
-        self.permlink.slice!(0,1)
+        self.permlink.slice!(1,49)
       end
       self.permlink.slice!(49, 60)
       if Permlink.first(:permlink => self.permlink)
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
         self.permlink.slice!(49,60)
       end
+      raise "real bad" if self.permlink.size < 5
     end
   end
   
