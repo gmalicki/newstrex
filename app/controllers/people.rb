@@ -16,9 +16,9 @@ class People < Application
             x =  p.save
             raise p.errors.inspect unless x
           end
-          i.reload
-          raise "hrmm" if i.permlinks.first.permlink.nil? || i.permlinks.first.permlink.size == 0
         end
+    @items  = @person.news_items.map { |i| i if i.title.size > 5 }
+    @rss_items = @items.map { |i| i unless i.rss_content.nil? }.compact
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
