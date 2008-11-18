@@ -10,7 +10,12 @@ class People < Application
     @items  = @person.news_items
     raise NotFound unless @person
     @rss_items = @items.all :rss_content.not => nil 
-    @rss_items.each { |i| Permlink.create(:news_item_id => i.id, :permlink => i.title) if i.permlinks.empty?}
+    @rss_items.each do |i| 
+      if i.permlinks.empty?
+        p = Permlink.new(:news_item_id => i.id, :permlink => i.title) 
+        raise "hrmm" unless p.save
+      end
+    end
     @headlines = @items.all :rss_content => nil
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
