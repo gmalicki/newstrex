@@ -37,8 +37,8 @@ class Person
   
   def self.tags_by_most_complete
     res = Set.new
-    #NewsItem.all(:order => [:images, :updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p } }
-    NewsMatch.all(:order => [:created_at], :limit => 150).each { |x| x.person.each { |p| res << p } }
+    NewsItem.all(:order => [:images, :updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p } }
+    #NewsMatch.all(:order => [:created_at], :limit => 150).each { |x| x.person.each { |p| res << p } }
     #NewsItem.all(:order => [:updated_at.desc], :limit => 100).each { |i| i.people.each { |p| res << p }}
     res.to_a
   end
