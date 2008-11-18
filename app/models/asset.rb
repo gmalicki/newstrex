@@ -4,6 +4,7 @@ class Asset
   property :id,               Serial
   property :file_name,        String
   property :s3_bucket,        String
+  property :md5_checksum,     String, :nullable => false, :unique => true
   property :content_type,     String
   property :size,             Integer
   property :parent_id,        Integer
@@ -42,6 +43,7 @@ class Asset
       if parent = Asset.first(:id => img['id'])
         parent.file_name = img['original']['file_name']
         parent.s3_bucket = img['bucket']
+        parent.md5_checksum = img['md5']
         parent.save
         puts "parent: #{parent.file_name}"
       end
@@ -50,7 +52,8 @@ class Asset
         if parent && i = img[size]
           Asset.create(:file_name => i['file_name'], 
                        :s3_bucket => img['bucket'], 
-                       :parent_id => img['id'], 
+                       :parent_id => img['id'],
+                       :md5_checksum => i['md5'],
                        :height => i['height'],
                        :width => i['width'], 
                        :size => i['size'])
