@@ -18,8 +18,7 @@ PHASE 1
  
  * first-last-pictures maybe first-last-photos *TONIGHT*
  
- * content-rich items should be truncated and have their own page a-la topix
- http://www.topix.com/forum/us/politics/T97VOLHC4NHRPVRS7#comments  *TONIGHT*
+* news_item permlinks must never start or end with - and must never have --
  
  http://localhost:4000/Kanye-West-News
  http://localhost:4000/Kanye-West/addressed-assault-arrest-in-blog-post
@@ -29,15 +28,13 @@ PHASE 1
  http://localhost:4000/Kanye-West/pictures
  http://localhost:4000/Kanye-West/pictures/arrest  (both pics and photos work =])
  
- multiple perm-link per news item support.  
+ multiple perm-link per news item support.    DONE
  
  * PAGE CACHING ERRRVYWHERE
  
- * URL routing correction           *TONIGHT*
- 
  * Get the right mix of initial content into the system for launch.  *TONIGHT*
  
- * DATA INTEGRITY [no duplication newsitems, only one copy of each pic]
+ * DATA INTEGRITY [no duplication newsitems, only one copy of each pic]  DONE
  
  * Switch to newstrex.com domain    *TONIGHT*
  
@@ -84,6 +81,9 @@ image:
  * registration/login                     (hard 9 hours)
 
   * comments                               (hard 9 hours) (go for it dude)
+  
+  * content-rich items should be truncated and have their own page a-la topix
+  http://www.topix.com/forum/us/politics/T97VOLHC4NHRPVRS7#comments  *TONIGHT*
 
   * admin features                         (hard 9 hours)
  

@@ -22,8 +22,13 @@
 	        </a>
 	    <% end %>
 	    <% end%>
-
+        
+        <% if item.content.size > 100 %>
+        <p><%= item.content.slice(0, 100)%> ... <a href="<%= inner_item_url %>">more</a></p>
+        <% else %>
 		<p><%= item.content %></p>
+		<% end %>
+		
 	</div>
     <div style="display:block; float:left; width: 100%">
 	<p class="postmetadata">
