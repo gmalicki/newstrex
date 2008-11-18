@@ -17,8 +17,8 @@ class People < Application
             raise p.errors.inspect unless x
           end
         end
-    @items  = @person.news_items.map { |i| i if i.title.size > 5 }
-    @rss_items = @items.map { |i| i unless i.rss_content.nil? }.compact
+    @items  = @person.news_items.map { |i| i if i.title.size > 5 && i.permlinks.size > 0 }
+    @rss_items = @items.map { |i| i unless i.rss_content.nil?}.compact
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
