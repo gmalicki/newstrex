@@ -2,8 +2,8 @@ class Permlink
   include DataMapper::Resource
   
   property :id, Serial
-  property :news_item_id, Integer
-  property :permlink, String, :nullable => false, :unique => true
+  property :news_item_id, Integer, :nullable => false
+  property :permlink, String, :nullable => false, :unique => true, :length => (1..50)
   
   belongs_to :news_item
   
