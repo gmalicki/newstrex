@@ -7,15 +7,10 @@ class Permlink
   
   belongs_to :news_item
   
-  before :valid?, :clean_permlink
+  #before :valid?, :clean_permlink
   
   def to_s
     self.permlink
-  end
-  
-protected
-  def escape_spaces(title)
-    Permalinks::escape(title).slice(0, 46)
   end
   
   def clean_permlink
@@ -36,5 +31,9 @@ protected
       raise "invalid news_item_id"
     end
   end
-
+  
+protected
+  def escape_spaces(title)
+    Permalinks::escape(title).slice(0, 46)
+  end
 end
