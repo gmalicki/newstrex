@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="NewsTrex News"/>
+	<title>Newstrex News Beta</title>
+	<%= css_include_tag 'people' %>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+	
+	
+		<div id="header_left">
+			<h1>Newstrex Beta" %></h1>
+			<div class="description">we're growing slowly but surely.. new features arriving daily.'</div>
+		</div>
+	
+		<div id="header_right">
+			<div id="subscribe">
+				<a href="http://thewrongadvices.com/ProSense/?feed=rss" title="Subscribe to RSS feed" rel="nofollow"><img src="/images/rss-feed-icon.jpg" alt="Subscribe to RSS feed" /></a>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	
+	
+</div>
+<hr />
+<div id="wrapper">
+
+<% tag_cloud @cloud, %w(nube1 nube2 nube3 nube5 nube6) do |name, css_class|%>
+    <%= link_to name, "/#{name.gsub(' ', '-')+'-News'}", :class => css_class %>
+<% end %>
+</div>
+
+		
+</body>
+</html>

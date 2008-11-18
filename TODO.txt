@@ -32,7 +32,6 @@ PHASE 1
  
  * PAGE CACHING ERRRVYWHERE
  
- * Get the right mix of initial content into the system for launch.  *TONIGHT*
  
  * DATA INTEGRITY [no duplication newsitems, only one copy of each pic]  DONE
  
