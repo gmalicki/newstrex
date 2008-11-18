@@ -6,6 +6,7 @@ class People < Application
   end
   
   def show(permlink)
+    raise "here"
     @person = Person.first(:permlink => permlink.split(/\-news/i)[0])
     @items  = @person.news_items.map { |i| i if i.title.size > 5 } # TODO remove this map, validation makes it not needed
     raise NotFound unless @person
@@ -23,7 +24,6 @@ class People < Application
       @@cloud = Person.tags_by_most_complete
     end
     @cloud = @@cloud
-    raise "here"
     render
   end
 end
