@@ -7,7 +7,7 @@
   rescue 
       uri = URI.parse("http://www.reddit.com")
   end
-  inner_item_url = '/' + @person.permlink + '/' + item.permlinks.first.permlink
+  inner_item_url = '/' + @person.permlink + '/' + Permlink.first(:news_item_id => item.id).permlink
   %>
   
 <div class="post" id="post-<%= item.id %>">
