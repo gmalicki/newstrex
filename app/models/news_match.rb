@@ -10,7 +10,6 @@ class NewsMatch
   
   def self.submit_news(news_item)
     count = 0
-    return false if NewsItem.first(:url => news_item.url)
     news_item.names.each do |name|
       puts "searching: #{name}"  
       if p = Person.first(:full_name => name)
