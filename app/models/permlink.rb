@@ -14,7 +14,7 @@ class Permlink
   end
   
   def clean_permlink
-    puts "inside clean permlink"
+    raise "inside clean permlink"
     if item = NewsItem.get(news_item_id)
       puts "item_title: #{item.title}"
       self.permlink = escape_spaces(self.permlink)
