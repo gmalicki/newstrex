@@ -14,14 +14,16 @@ class Permlink
   end
   
   def clean_permlink
-    raise "permlink is blank" if self.permlink.nil? || self.permlink.size == 0
     if item = NewsItem.get(news_item_id)
       self.permlink = escape_spaces(self.permlink)
+      raise "permlink is blank" if self.permlink.nil? || self.permlink.size == 0
       item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
       if self.permlink.slice(0,1) == "-"
         self.permlink.slice!(0,1)
       end
+      raise "permlink is blank1" if self.permlink.nil? || self.permlink.size == 0
       self.permlink.slice!(0,46)
+      raise "permlink is blank2" if self.permlink.nil? || self.permlink.size == 0
       if Permlink.first(:permlink => self.permlink)
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
         self.permlink.slice!(0,46)
