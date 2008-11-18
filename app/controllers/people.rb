@@ -13,12 +13,11 @@ class People < Application
     @rss_items.each do |i| 
           if i.permlinks.empty?
             p = Permlink.new(:news_item_id => i.id, :permlink => i.title)
-            p.clean_permlink
             x =  p.save
             raise p.errors.inspect unless x
           end
         end
-    @headlines = @items.all :rss_content => nil
+    @headlines = @items.map { |i| i if i.rss_content.nil? }
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
       @@cloud = Person.tags_by_most_complete
