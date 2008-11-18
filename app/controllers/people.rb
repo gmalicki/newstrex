@@ -15,6 +15,7 @@ class People < Application
             p = Permlink.new(:news_item_id => i.id, :permlink => i.title)
             x =  p.save
             raise p.errors.inspect unless x
+            raise "hrmm" if i.permlinks.first.permlink.nil? || i.permlinks.first.permlink.size == 0
           end
         end
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
