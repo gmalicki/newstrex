@@ -16,6 +16,7 @@ class People < Application
             x =  p.save
             raise p.errors.inspect unless x
           end
+          i.reload
           raise "hrmm" if i.permlinks.first.permlink.nil? || i.permlinks.first.permlink.size == 0
         end
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
