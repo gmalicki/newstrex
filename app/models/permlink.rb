@@ -7,7 +7,7 @@ class Permlink
   
   belongs_to :news_item
   
-  before :valid?, :clean_permlink
+  #before :valid?, :clean_permlink
   
   def to_s
     self.permlink
@@ -20,21 +20,21 @@ protected
   
   def clean_permlink
     puts "inside clean permlink"
-     if item = NewsItem.get(news_item_id)
-        puts "item_title: #{item.title}"
-        self.permlink = escape_spaces(self.permlink)
-        item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
-        if self.permlink.slice(0,1) == "-"
-          self.permlink.slice!(0,1)
-        end
-        self.permlink.slice!(0,46)
-        if Permlink.first(:permlink => self.permlink)
-          self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
-          self.permlink.slice!(0,46)
-        end
-      else 
-        raise "invalid news_item_id"
+    if item = NewsItem.get(news_item_id)
+      puts "item_title: #{item.title}"
+      self.permlink = escape_spaces(self.permlink)
+      item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
+      if self.permlink.slice(0,1) == "-"
+        self.permlink.slice!(0,1)
       end
+      self.permlink.slice!(0,46)
+      if Permlink.first(:permlink => self.permlink)
+        self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
+        self.permlink.slice!(0,46)
+      end
+    else 
+      raise "invalid news_item_id"
     end
   end
+
 end
