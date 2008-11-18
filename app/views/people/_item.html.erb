@@ -23,8 +23,8 @@
 	    <% end %>
 	    <% end%>
         
-        <% if item.content.size > 100 %>
-        <p><%= item.content.slice(0, 100)%> ... <a href="<%= inner_item_url %>">more</a></p>
+        <% if item.content.size > 150 %>
+        <p><%= item.content.slice(0, 150)%><a href="<%= inner_item_url %>">... more</a></p>
         <% else %>
 		<p><%= item.content %></p>
 		<% end %>
