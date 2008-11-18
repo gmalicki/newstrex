@@ -18,6 +18,7 @@ class NewsSource
       if feed_url && @feed = FeedNormalizer::FeedNormalizer.parse(open(feed_url))
         puts "got feed: #{feed_url}".inspect
         @feed.entries.each do |e|
+          next if NewsItem.first(:url => e.url)
           news_items << NewsItem.new(:title => e.title, :url => e.url, :rss_content => e.content, :news_source_id => self.id)
         end
         return true
