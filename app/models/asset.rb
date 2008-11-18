@@ -4,7 +4,7 @@ class Asset
   property :id,               Serial
   property :file_name,        String
   property :s3_bucket,        String
-  property :md5_checksum,     String, :nullable => false, :unique => true
+  property :md5_checksum,     String
   property :content_type,     String
   property :size,             Integer
   property :parent_id,        Integer

@@ -37,6 +37,8 @@ PHASE 1
  
  * Get the right mix of initial content into the system for launch.  *TONIGHT*
  
+ * DATA INTEGRITY [no duplication newsitems, only one copy of each pic]
+ 
  * Switch to newstrex.com domain    *TONIGHT*
  
  * Ads                                    (medium 2 hours) *TONIGHT*
