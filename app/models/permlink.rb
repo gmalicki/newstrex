@@ -25,7 +25,7 @@ class Permlink
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
         self.permlink.slice!(49,60)
       end
-      raise "real bad" if self.permlink.size < 5
+      raise "real bad : #{item.title} #{self.permlink}" if self.permlink.size < 5
     end
   end
   
