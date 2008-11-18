@@ -17,7 +17,7 @@ class People < Application
             raise p.errors.inspect unless x
           end
         end
-    @headlines = @items.map { |i| i if i.rss_content.nil? }
+    @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
       @@cloud = Person.tags_by_most_complete
