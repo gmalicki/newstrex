@@ -37,10 +37,10 @@ class Asset
       unless msg
         next
       end
+      img = msg['image'] 
       if Asset.first(:md5_checksum => img['md5']) # skip it if we already have it.
         next
       end
-      img = msg['image'] 
       raise "rouge record found in message queue" if img.class != Hash
       # take an image record and update the db accordingly.
       if parent = Asset.first(:id => img['id'])
