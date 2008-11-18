@@ -15,6 +15,7 @@ class Permlink
         self.permlink.slice!(0,1)
       end
       self.permlink.slice!(0,46)
+      puts "PERMLINK: #{self.permlink}"
       if Permlink.first(:permlink => self.permlink)
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
         self.permlink.slice!(0,46)
