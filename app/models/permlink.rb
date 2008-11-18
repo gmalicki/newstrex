@@ -14,10 +14,10 @@ class Permlink
       if self.permlink.slice(0,1) == "-"
         self.permlink.slice!(0,1)
       end
-      self.permlink.slice!(0,49)
+      self.permlink.slice!(0,46)
       if Permlink.first(:permlink => self.permlink)
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
-        self.permlink.slice!(0,49)
+        self.permlink.slice!(0,46)
       end
     end
   end
