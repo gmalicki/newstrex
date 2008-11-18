@@ -22,11 +22,11 @@ class Permlink
         self.permlink.slice!(0,1)
       end
       raise "permlink is blank1" if self.permlink.nil? || self.permlink.size == 0
-      self.permlink.slice!(0,46)
+      self.permlink.slice!(45, 60)
       raise "permlink is blank2" if self.permlink.nil? || self.permlink.size == 0
       if Permlink.first(:permlink => self.permlink)
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
-        self.permlink.slice!(0,46)
+        self.permlink.slice!(45,60)
       end
     else 
       raise "invalid news_item_id"
