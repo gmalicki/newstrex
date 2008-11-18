@@ -18,7 +18,7 @@ class Permlink
       self.permlink = escape_spaces(self.permlink)
       item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
       if self.permlink.slice(0,1) == "-"
-        self.permlink.slice!(1,49)
+        self.permlink.slice!(0,1)
       end
       self.permlink.slice!(49, 60)
       if Permlink.first(:permlink => self.permlink)
