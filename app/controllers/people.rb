@@ -9,7 +9,7 @@ class People < Application
     @person = Person.first(:permlink => permlink.split(/\-news/i)[0])
     @items  = @person.news_items.map { |i| i if i.title.size > 5 } # TODO remove this map, validation makes it not needed
     raise NotFound unless @person
-    @rss_items = @items.all :rss_content.not => nil 
+    @rss_items = @items.map { |i| i unless i.rss_content.nil? } 
     @rss_items.each do |i| 
       if i.permlinks.empty?
         p = Permlink.new(:news_item_id => i.id, :permlink => i.title) 
