@@ -18,7 +18,7 @@
 	    <% item.assets.each do |img| %>
 	        <% next unless img.file_name && img.file_name.size > 4 && img.small_thumb.file_name %>
 	        <a href="<%= inner_item_url%>">
-	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>' style="float: right; padding: 5px"/> 
+	        <img src='http://newstrex-images.s3.amazonaws.com/<%= img.small_thumb.file_name %>' style="float: right; padding: 5px" alt="<%= item.people.first.full_name %>"/> 
 	        </a>
 	    <% end %>
 	    <% end%>

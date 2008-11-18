@@ -71,7 +71,7 @@ protected
   end
   
   def link_for_person(person)
-    '<a href="/' + person.permlink + '-News" alt="'+ person.full_name + ' News' + '">' + person.full_name + '</a>'
+    '<a href="/' + person.permlink + '-News">' + person.full_name + '</a>'
   end
   
   def extract_names
