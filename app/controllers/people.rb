@@ -23,6 +23,7 @@ class People < Application
       @@cloud = Person.tags_by_most_complete
     end
     @cloud = @@cloud
+    raise "here"
     render
   end
 end
