@@ -7,7 +7,7 @@ class Permlink
   
   belongs_to :news_item
   
-  #before :valid?, :clean_permlink
+  before :valid?, :clean_permlink
   
   def to_s
     self.permlink
