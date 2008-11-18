@@ -14,9 +14,8 @@ class Permlink
   end
   
   def clean_permlink
-    raise "inside clean permlink"
+    raise "permlink is blank" if self.permlink.nil? || self.permlink.size == 0
     if item = NewsItem.get(news_item_id)
-      puts "item_title: #{item.title}"
       self.permlink = escape_spaces(self.permlink)
       item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
       if self.permlink.slice(0,1) == "-"
