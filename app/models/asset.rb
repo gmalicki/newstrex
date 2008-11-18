@@ -37,6 +37,9 @@ class Asset
       unless msg
         next
       end
+      if Asset.first(:md5_checksum => img['md5']) # skip it if we already have it.
+        next
+      end
       img = msg['image'] 
       raise "rouge record found in message queue" if img.class != Hash
       # take an image record and update the db accordingly.
@@ -53,7 +56,6 @@ class Asset
           Asset.create(:file_name => i['file_name'], 
                        :s3_bucket => img['bucket'], 
                        :parent_id => img['id'],
-                       :md5_checksum => i['md5'],
                        :height => i['height'],
                        :width => i['width'], 
                        :size => i['size'])
