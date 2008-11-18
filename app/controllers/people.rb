@@ -13,7 +13,8 @@ class People < Application
     @rss_items.each do |i| 
       if i.permlinks.empty?
         p = Permlink.new(:news_item_id => i.id, :permlink => i.title) 
-        raise "hrmm" unless p.save
+        x =  p.save
+        raise p.errors.inspect unless x
       end
     end
     @headlines = @items.all :rss_content => nil
