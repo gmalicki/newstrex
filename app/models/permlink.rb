@@ -28,6 +28,6 @@ class Permlink
 protected
   
   def escape_spaces(title)
-    Permalinks::escape(title)
+    Permalinks::escape(title).slice(0, 46)
   end
 end
