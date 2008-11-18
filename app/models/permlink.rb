@@ -20,6 +20,8 @@ class Permlink
         self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
         self.permlink.slice!(0,46)
       end
+    else 
+      raise "invalid news_item_id"
     end
   end
   
