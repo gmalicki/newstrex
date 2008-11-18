@@ -24,13 +24,6 @@ class NewsMatch
   end
   
   def self.create_permlink(news_item)
-    escaped_title = Permalinks::escape(news_item.title.dup)
-    if news_item.permlinks.empty?
-      pl = Permlink.new(:news_item_id => news_item.id, :permlink => escaped_title)
-      unless pl.save
-        pl.permlink = escaped_title + "#{rand(31337)}"
-        pl.save
-      end
-    end
+    Permlink.create(:news_item_id => news_item.id, :permlink => news_item.title)
   end
 end

@@ -9,15 +9,25 @@ class Permlink
   
   before :save do
     if item = NewsItem.get(news_item_id)
+      self.permlink = escape_spaces(self.permlink)
       item.people.each { |p| self.permlink.gsub!(/#{p.permlink}/i, '') }
       if self.permlink.slice(0,1) == "-"
         self.permlink.slice!(0,1)
       end
       self.permlink.slice!(0,49)
+      if Permlink.first(:permlink => self.permlink)
+        self.permlink = self.permlink.slice(0,44)+"-#{rand(31337)}"
+        self.permlink.slice!(0,49)
+      end
     end
   end
   
   def to_s
     self.permlink
+  end
+protected
+  
+  def escape_spaces(title)
+    Permalinks::escape(title)
   end
 end

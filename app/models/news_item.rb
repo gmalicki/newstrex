@@ -173,6 +173,7 @@ end
 
 module GP
   def self.parse text
+    begin
     words      = text.split(' ').map { |w| w.split("'")[0] }
     full_names = Set.new
     words.each_with_index do |w, idx| 
@@ -189,6 +190,9 @@ module GP
       elsif capitalized?(w) && capitalized?(words[idx+1]) && !w.match(',')
         full_names << "#{w} #{w1.split(',')[0].split('.')[0]}"
       end
+    end
+    rescue
+      full_names.to_a.map { |x| x.lstrip.rstrip } 
     end
     full_names.to_a.map { |x| x.lstrip.rstrip } 
   end
