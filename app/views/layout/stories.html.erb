@@ -101,11 +101,11 @@ google_color_url = "804000";
 			
 				<li class="pagenav">
 				    <h2>Blog-o-Sphere</h2>
-                    <p>
+                    <div id="tagCloud">
 				        <% tag_cloud @cloud, %w(nube1 nube2 nube3 nube5 nube6) do |name, css_class|%>
 				            <%= link_to name, "/#{name.gsub(' ', '-')+'-News'}", :class => css_class %>
 				        <% end %>
-				    </p>
+				    </div>
 				</li>
 		
 					
