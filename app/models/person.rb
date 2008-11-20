@@ -15,7 +15,7 @@ class Person
   
   has n, :assets
   has n, :news_matches
-  has n, :news_items, :through => :news_matches
+  has n, :news_items, :through => :news_matches, :order => [:published_at.desc]
   
   before :save do
     self.full_name = "#{first_name} #{last_name}"

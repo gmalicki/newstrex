@@ -210,29 +210,3 @@ if ARGV.flags.url
 end
 
 
-#irb(main):001:0> file = File.open('spiders/out.txt', 'r'); out = File.open('spiders/matched.txt', 'wb'); file.each { |l| (puts l; out.puts l) if Person.first :full_name => l.split('--- ')[1].split("\n")[0] }
-
-
-
-# if ARGV.flags.o && ARGV.flags.url
-#   File.open(ARGV.flags.o, 'wb') { |f| f.puts Newslib::Page.new(ARGV.flags.url).to_yaml }
-#   exit 0
-# elsif ARGV.flags.o && ARGV.flags.spider
-#   File.open(ARGV.flags.o, 'wb') do |f|
-#       Newslib::Spider.whole_site do |p|
-#         p.sync_image(ARGV.flags.pics) if ARGV.flags.pics
-#         f.puts p.to_yaml 
-#       end
-#   end
-#   exit 0
-# elsif ARGV.flags.o && ARGV.flags.names
-#   File.open(ARGV.flags.o, 'wb') do |f|
-#     Newslib::Spider.find_names { |p| puts "."; f.puts p.to_yaml }
-#   end
-# end
-# 
-# if ARGV.flags.url
-#   puts Newslib::Page.new(ARGV.flags.url).to_yaml
-# end
-
-

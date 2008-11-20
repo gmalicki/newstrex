@@ -33,7 +33,11 @@
     <div style="display:block; float:left; width: 100%">
 	<p class="postmetadata">
 	    <small>
-	    <%= item.created_at.strftime("%B %d %Y") %>   
+	        <% if item.published_at %>
+	            <%= item.published_at.strftime("%B %d %Y") %>
+	        <% else %> 
+	            <%= item.created_at.strftime("%B %d %Y") %>
+	        <% end %>
 	    <% if uri.host && uri.host.size > 0%>
 	        |  From <a href="http://<%= uri.host %>" title="See more news from <%= uri.host %>" rel="orig tag"><%= uri.host %></a></small>
 	    <% end %>

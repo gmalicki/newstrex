@@ -3,7 +3,7 @@ class NewsItem
   
   property :id,             Serial  
   property :news_source_id, Integer,   :nullable => false
-  property :title,          Text,      :nullable => false,  :lazy => false, :length => (1..20)
+  property :title,          Text,      :nullable => false,  :lazy => false, :length => (5..20)
   property :url,            Text,      :nullable => false,  :unique => true, :lazy => false
   property :rss_content,    Text,      :lazy => false
   property :deep_content,   Text  

@@ -34,10 +34,15 @@ class Asset
     loop do
       return nil if out_queue.size == 0
       msg = YAML.load(out_queue.pop.to_s)
-      unless msg
+      if msg.nil?
         next
       end
-      img = msg['image'] 
+      if msg[:story]
+        process_news(msg)
+        next
+      end
+      img = msg['image']
+      next unless img
       if Asset.first(:md5_checksum => img['md5']) # skip it if we already have it.
         next
       end
@@ -63,6 +68,25 @@ class Asset
         end
       end
     end      
+  end
+  
+  def self.process_news(item)
+    next unless item[:story] && item[:date] && item[:headline] && item[:url] && item[:topic]
+    if person = Person.first(:full_name => item[:topic].split(' ').map { |x| x.capitalize }.join(" "))
+      s = NewsSource.create :url => item[:source_desc]
+      if !s.valid?
+        s = NewsSource.first(:url => item[:source_desc])
+      end
+      i = NewsItem.new(:title => item[:headline], 
+        :rss_content => item[:story], 
+        :url => item[:url], 
+        :published_at => item[:date], :news_source => s)
+      if i.save
+        NewsMatch.create :person_id => person.id, :news_item_id => i.id
+      else 
+        puts i.errors.inspect
+      end
+    end
   end
   
   def self.save_rss_media(news_item)

@@ -9,3 +9,19 @@ Merb::Config.use { |c|
   # or redirect logger using IO handle
   # c[:log_stream] = STDOUT
 }
+
+
+Merb::Cache.setup do
+
+  # the order that stores are setup is important
+  # faster stores should be setup first
+
+  # page cache to the public dir
+  register(:page_store, PageStore[FileStore],
+                    :dir => Merb.root / "public")
+
+
+  # sets up the ordering of stores when attempting to read/write cache entries
+  # register(:default, AdhocStore[:page_store, :action_store])
+
+end
