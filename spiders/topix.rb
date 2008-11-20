@@ -42,7 +42,13 @@ protected
   
   def self.extract(page)
     headlines = page.search("//p[@class='headline']").map { |h| CGI.escapeHTML(h.inner_text.split('</img')[0].gsub("\n", '').gsub('"', '')) }
-    timestamps = page.search("//p[@class='timestamp']").map { |s| Time.parse(CGI.escapeHTML(s.inner_text.split(' |')[0].gsub("\n", ''))) }
+    timestamps = page.search("//p[@class='timestamp']").map do |s| 
+      if s.inner_text.split(' |')[0].gsub("\n", '').match('min ago')
+        Time.now
+      else
+        Time.parse(CGI.escapeHTML(s.inner_text.split(' |')[0].gsub("\n", ''))) 
+      end
+    end
     source_names = page.search("//p[@class='timestamp']").map { |n| CGI.escapeHTML(n.inner_text.split('| ')[1].split('<')[0].gsub("\n", '')) }
     stories = page.search("//p[@class='lede']").map { |x| x.inner_text.split('</input')[0].gsub("\n", '').split('Comment?')[0].gsub(' ...','') }
     url = page.search("//a[@t='artclick']").map { |x| x.to_s.split('<a href="')[1].split('"')[0] }
