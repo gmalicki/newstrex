@@ -11,7 +11,13 @@
   %>
   
 <div class="post" id="post-<%= item.id %>">
-	<h2><a href="<%= inner_item_url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a></h2>
+	<h2>
+	    <% if item.content.size > 250 %>
+	        <a href="<%= inner_item_url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a>
+	    <% else %>
+	        <a href="<%= item.url %>" rel="external" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%>
+	    <% end %>
+	    </h2>
 	
 	<div class="entry">
 	    <% if item.assets && item.assets.size > 0 %>
