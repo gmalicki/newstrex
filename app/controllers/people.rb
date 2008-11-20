@@ -1,5 +1,6 @@
 class People < Application  
   @@cloud = nil
+  cache :index, :show
   
   def index
     render "foo"
