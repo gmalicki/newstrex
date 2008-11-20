@@ -1,7 +1,7 @@
 class People < Application  
   @@cloud = nil
   cache :index, :show
-  eager_cache :index, :show
+  #eager_cache :index, :show
   
   def index
     render "foo"
