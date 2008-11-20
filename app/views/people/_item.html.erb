@@ -15,7 +15,7 @@
 	    <% if item.content.size > 250 %>
 	        <a href="<%= inner_item_url %>" rel="bookmark" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a>
 	    <% else %>
-	        <a href="<%= item.url %>" rel="external" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%>
+	        <a href="<%= item.url %>" rel="external" title="Read the original article at <%= uri.host %>"><%= item.title || "no title"%></a>
 	    <% end %>
 	    </h2>
 	
