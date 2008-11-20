@@ -23,7 +23,7 @@ Merb::Cache.setup do
 
 
   # sets up the ordering of stores when attempting to read/write cache entries
-   register(:default, AdhocStore[:page_store])
+   register(:default, Merb::Cache::AdhocStore[:page_store])
 
 end
 
