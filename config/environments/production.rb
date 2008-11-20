@@ -10,24 +10,20 @@ Merb::Config.use { |c|
   # c[:log_stream] = STDOUT
 }
 
-# Merb::Cache.setup do
-# 
-#   # the order that stores are setup is important
-#   # faster stores should be setup first
-#   
-#   register(:tmp_cache, Merb::Cache::FileStore, :dir => "tmp/")
-# 
-#   # page cache to the public dir
-#   register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore],
-#                     :dir => Merb.root / "public")
-# 
-# 
-#   # sets up the ordering of stores when attempting to read/write cache entries
-#   # register(:default, AdhocStore[:page_store, :action_store])
-# 
-# end
+Merb::Cache.setup do
 
-Merb::Cache.setup(Merb::Cache::FileStore) 
+  # the order that stores are setup is important
+  # faster stores should be setup first
+  
+  register(:tmp_cache, Merb::Cache::FileStore, :dir => "tmp/")
 
-Merb::Cache.setup(:page_store, Merb::Cache::PageStore[FileStore], 
+  # page cache to the public dir
+  register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore],
                     :dir => Merb.root / "public")
+
+
+  # sets up the ordering of stores when attempting to read/write cache entries
+   register(:default, AdhocStore[:page_store])
+
+end
+
