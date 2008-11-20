@@ -77,6 +77,9 @@ class Asset
       if !s.valid?
         s = NewsSource.first(:url => item[:source_desc])
       end
+      if item[:date] > Time.now
+        item[:date] = Time.now
+      end
       i = NewsItem.new(:title => item[:headline], 
         :rss_content => item[:story], 
         :url => item[:url], 
