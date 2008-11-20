@@ -46,6 +46,11 @@ PHASE 1
  
  * BUG [duplicate image problem]  DONE
  
+ * SORT by number of images
+ 
+ * MUST BE VALID XHTML!
+
+ 
  ------------------
  
  32 hours
