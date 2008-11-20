@@ -6,6 +6,10 @@
 	<meta name="description" content="<%= @person.full_name %> News"/>
 	<title><%= @person.full_name || ""%> News</title>
 	<%= css_include_tag 'people' %>
+</head>
+
+<body>
+
 	<script language="javascript" type="text/javascript">
 	    function externalLinks() { 
          if (!document.getElementsByTagName) return; 
@@ -19,9 +23,6 @@
         } 
         window.onload = externalLinks;
     </script>
-</head>
-
-<body>
 
 <div id="page">
 
