@@ -13,7 +13,7 @@ Merb::Config.use { |c|
 
 Merb::Cache.setup do
 
-  Merb::Cache.setup(:tmp_dir, Merb::Cache::FileStore, :dir => Merb.root / :tmp)
+  #Merb::Cache.setup(:tmp_dir, Merb::Cache::FileStore, :dir => Merb.root / :tmp)
 
   Merb::Cache.setup(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / :public)
 
