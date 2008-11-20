@@ -21,7 +21,8 @@ class NewsItem
   belongs_to  :news_source
   
   before   :save do
-    clean_rss_content   
+    clean_rss_content
+    clear_title
     extract_names
     localize_content
   end
@@ -56,6 +57,10 @@ class NewsItem
   end
   
 protected
+  def clean_title
+    self.title.gsub!('-', ' ')
+  end
+
   def clean_rss_content
     tmp = self.rss_content
     self.rss_content = CGI.unescapeHTML(tmp)

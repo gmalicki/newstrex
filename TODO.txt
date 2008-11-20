@@ -6,7 +6,7 @@ PHASE 1
 
  * Text processing / name-link generation DONE
  
- * Main Page                              (easy 4 hours)
+ * Main Page                              DONE (but laughable)
 
  * Image support for news_items/people    DONE
  
@@ -16,9 +16,9 @@ PHASE 1
  
  * smooth out data import process.        DONE
  
- * first-last-pictures maybe first-last-photos *TONIGHT*
+ * first-last-pictures maybe first-last-photos (3 hours)
  
-* news_item permlinks must never start or end with - and must never have --
+* news_item permlinks must never start or end with - and must never have -- (15 minutes)
  
  http://localhost:4000/Kanye-West-News
  http://localhost:4000/Kanye-West/addressed-assault-arrest-in-blog-post
@@ -30,12 +30,13 @@ PHASE 1
  
  multiple perm-link per news item support.    DONE
  
- * PAGE CACHING ERRRVYWHERE
- 
+ * PAGE CACHING ERRRVYWHERE.              DONE
  
  * DATA INTEGRITY [no duplication newsitems, only one copy of each pic]  DONE
  
- * Switch to newstrex.com domain    *TONIGHT*
+ * Switch to newstrex.com domain    DONE
+ 
+ * Google Analytics                 DONE
  
  * Ads                                    (medium 2 hours) *TONIGHT*
  
@@ -43,7 +44,7 @@ PHASE 1
  
  * Deployment.                            DONE
  
- * BUGS [duplicate image problem]  *TONIGHT*
+ * BUG [duplicate image problem]  DONE
  
  ------------------
  
