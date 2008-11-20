@@ -14,9 +14,10 @@ Merb::Cache.setup do
 
   # the order that stores are setup is important
   # faster stores should be setup first
-  
-  register(Merb::Cache::FileStore)
-
+  begin
+    register(Merb::Cache::FileStore)
+  rescue Merb::Cache::StoreExists
+  end
   # page cache to the public dir
   register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore],
                     :dir => Merb.root / "public")
