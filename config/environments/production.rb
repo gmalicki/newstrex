@@ -10,11 +10,12 @@ Merb::Config.use { |c|
   # c[:log_stream] = STDOUT
 }
 
-
 Merb::Cache.setup do
 
   # the order that stores are setup is important
   # faster stores should be setup first
+  
+  register(:tmp_cache, FileStore, :dir => "/tmp")
 
   # page cache to the public dir
   register(:page_store, Merb::Cache::PageStore[FileStore],
