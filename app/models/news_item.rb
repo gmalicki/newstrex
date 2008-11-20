@@ -22,7 +22,7 @@ class NewsItem
   
   before   :save do
     clean_rss_content
-    clear_title
+    clean_title
     extract_names
     localize_content
   end
