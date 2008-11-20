@@ -5,19 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="description" content="<%= @person.full_name %> News"/>
 	<title><%= @person.full_name || ""%> News</title>
-	<script language="javascript" type="text/javascript">
-	    function externalLinks() { 
-         if (!document.getElementsByTagName) return; 
-         var anchors = document.getElementsByTagName("a"); 
-         for (var i=0; i<anchors.length; i++) { 
-           var anchor = anchors[i]; 
-           if (anchor.getAttribute("href") && 
-               anchor.getAttribute("rel") == "external") 
-             anchor.target = "_blank"; 
-         } 
-        } 
-        window.onload = externalLinks;
-    </script>
+	<script language="JavaScript" src="/javascripts/external-links.js"></script>
 	<%= css_include_tag 'people' %>
 </head>
 
