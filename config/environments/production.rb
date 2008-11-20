@@ -14,8 +14,6 @@ Merb::Cache.setup do
 
   # the order that stores are setup is important
   # faster stores should be setup first
-  
-  register(:tmp_cache, Merb::Cache::FileStore, :dir => "tmp/")
 
   # page cache to the public dir
   register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore],
