@@ -106,7 +106,15 @@ google_color_url = "804000";
 			<ul>
 							<li>
 					<div>
-<form method="get" id="searchform" action="/ProSense/index.php"><p><input type="text" value="Search..." name="s" id="s" onfocus="if (this.value == 'Search...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search...';}" /></p></form>
+                        <form action="http://www.google.com/cse" id="cse-search-box" target="_blank">
+                          <div>
+                            <input type="hidden" name="cx" value="partner-pub-7612937511380755:lakfgo-u3ab" />
+                            <input type="hidden" name="ie" value="ISO-8859-1" />
+                            <input type="text" name="q" size="31" />
+                            <input type="submit" name="sa" value="Search" style="visibility:none"/>
+                          </div>
+                        </form>
+                        <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 </div>
 				</li>
 			
