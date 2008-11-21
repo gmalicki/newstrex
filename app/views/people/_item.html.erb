@@ -32,7 +32,7 @@
         <% if item.content.size > 250 %>
         <p><%= safe_slice(item.content, 250) %><a href="<%= inner_item_url %>">...more</a></p>
         <% else %>
-		<p><%= item.content %></p>
+		<p><%= safe_slice(item.content, 250) %></p>
 		<% end %>
 		
 	</div>
