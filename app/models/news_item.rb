@@ -72,7 +72,7 @@ protected
   end
   
   def localize_content
-    self.content = content_plain_text
+    self.content = CGI.escapeHTML(content_plain_text)
     self.people.each { |p| self.content.gsub!(p.full_name, link_for_person(p)) }    
   end
   
