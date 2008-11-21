@@ -30,9 +30,9 @@
 	    <% end%>
         
         <% if item.content.size > 250 %>
-        <p><%= safe_slice(item.content, 250) %><a href="<%= inner_item_url %>">...more</a></p>
+        <p><%= CGI.escapeHTML(safe_slice(item.content, 250)) %><a href="<%= inner_item_url %>">...more</a></p>
         <% else %>
-		<p><%= item.content %></p>
+		<p><%= CGI.escapeHTML(item.content) %></p>
 		<% end %>
 		
 	</div>
