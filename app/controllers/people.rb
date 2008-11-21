@@ -21,7 +21,9 @@ class People < Application
             raise p.errors.inspect unless x
           end
         end
-    @rss_items = @items.map { |i| i unless i.rss_content.nil? && i.permlinks.size > 0}.compact
+    @rss_items = @items.map { |i| i unless i.rss_content.nil? && i.permlinks.size > 0 }.compact
+    @rss_items.sort! { |x, y| x.images.size <=> x.images.size }
+    @rrs_items.sort! { |x, y| x.split(/#{@person.full_name}/i).size <=> y.split(/#{@person.full_name}/i).size }
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
