@@ -14,5 +14,14 @@ module Merb
         yield p.full_name, classes[(p.tag_score - min) / divisor]
       }
     end
+    
+    def safe_slice(html, max_size)  
+      d = Hpricot(html)
+      links = (d/:a).map { |l| l.to_s }
+      links.each { |l| html.gsub!(l, '**') }
+      html = html.slice(0, max_size)
+      links.each { |l| html.sub!('**', l) }
+      return html
+    end
   end
 end
