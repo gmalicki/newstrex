@@ -23,7 +23,7 @@ class People < Application
         end
     @rss_items = @items.map { |i| i unless i.rss_content.nil? && i.permlinks.size > 0 }.compact
     @rss_items.sort! { |x, y| x.assets.size <=> x.assets.size }
-    @rss_items.sort! { |x, y| x.split(/#{@person.full_name}/i).size <=> y.split(/#{@person.full_name}/i).size }
+    @rss_items.sort! { |x, y| x.content.split(/#{@person.full_name}/i).size <=> y.content.split(/#{@person.full_name}/i).size }
     @headlines = @items.map { |i| i if i.rss_content.nil? }.compact
     if @@cloud.nil?
       puts "TAAGGGGSSS BY MOST COMPOETELELELKJ!!!"
